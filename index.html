@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .radio-group, .checkbox-group {
+            display: flex;
+            gap: 15px;
+        }
+        .radio-group label, .checkbox-group label {
+            font-weight: normal;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        .form-row .form-group {
+            flex: 1;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .required:after {
+            content: " *";
+            color: red;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        .section-title {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Builder</h1>
+        <form id="resumeForm" enctype="multipart/form-data">
+            <!-- Personal Information Section -->
+            <div class="section">
+                <h2 class="section-title">Personal Information</h2>
+                
+                <div class="form-group">
+                    <label for="fullName" class="required">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="required">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="required">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" name="dob">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="male"> Male</label>
+                            <label><input type="radio" name="gender" value="female"> Female</label>
+                            <label><input type="radio" name="gender" value="other"> Other</label>
+                            <label><input type="radio" name="gender" value="prefer-not-to-say"> Prefer not to say</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="maritalStatus">Marital Status</label>
+                        <select id="maritalStatus" name="maritalStatus">
+                            <option value="">Select</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                            <option value="widowed">Widowed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="nationality">Nationality</label>
+                        <input type="text" id="nationality" name="nationality">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <textarea id="address" name="address"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="linkedin">LinkedIn Profile URL</label>
+                        <input type="url" id="linkedin" name="linkedin">
+                    </div>
+                    <div class="form-group">
+                        <label for="github">GitHub Profile URL</label>
+                        <input type="url" id="github" name="github">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="photo">Upload Profile Photo</label>
+                        <input type="file" id="photo" name="photo" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="resume">Upload Resume (PDF only)</label>
+                        <input type="file" id="resume" name="resume" accept=".pdf">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Career Information Section -->
+            <div class="section">
+                <h2 class="section-title">Career Information</h2>
+                
+                <div class="form-group">
+                    <label for="objective">Career Objective</label>
+                    <textarea id="objective" name="objective"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="qualification" class="required">Highest Qualification</label>
+                        <input type="text" id="qualification" name="qualification" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="college" class="required">Name of College/University</label>
+                        <input type="text" id="college" name="college" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="graduationYear" class="required">Year of Graduation</label>
+                    <input type="text" id="graduationYear" name="graduationYear" required>
+                </div>
+            </div>
+            
+            <!-- Skills Section -->
+            <div class="section">
+                <h2 class="section-title">Skills & Expertise</h2>
+                
+                <div class="form-group">
+                    <label for="technicalSkills">Technical Skills (HTML, CSS, JS, etc.)</label>
+                    <textarea id="technicalSkills" name="technicalSkills" placeholder="Separate skills with commas"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="programmingLanguages">Programming Languages Known</label>
+                    <textarea id="programmingLanguages" name="programmingLanguages" placeholder="Separate languages with commas"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="certifications">Certifications (if any)</label>
+                    <textarea id="certifications" name="certifications" placeholder="List your certifications with issuing organization"></textarea>
+                </div>
+            </div>
+            
+            <!-- Work Experience Section -->
+            <div class="section">
+                <h2 class="section-title">Work Experience</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="experienceYears">Work Experience (Years)</label>
+                        <input type="text" id="experienceYears" name="experienceYears">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastCompany">Last Company Worked At</label>
+                        <input type="text" id="lastCompany" name="lastCompany">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="jobRole">Your Job Role/Designation</label>
+                    <input type="text" id="jobRole" name="jobRole">
+                </div>
+            </div>
+            
+            <!-- Additional Information Section -->
+            <div class="section">
+                <h2 class="section-title">Additional Information</h2>
+                
+                <div class="form-group">
+                    <label for="languages">Languages Known</label>
+                    <textarea id="languages" name="languages" placeholder="Separate languages with commas"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="hobbies">Hobbies</label>
+                    <textarea id="hobbies" name="hobbies"></textarea>
+                </div>
+            </div>
+            
+            <!-- Declaration Section -->
+            <div class="section">
+                <div class="form-group">
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" id="declaration" name="declaration" required> I hereby declare that the above information is true and authentic to the best of my knowledge.</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit">Submit Resume</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('resumeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically handle form submission
+            alert('Resume submitted successfully!');
+            // In a real application, you would send the data to a server
+            // this.submit();
+        });
+    </script>
+</body>
+</html>
